@@ -1,0 +1,7 @@
+App\Entity\Cliente:
+  attributes:
+    id: 
+      groups: ['cliente']
+    idPersona:
+      groups: ['cliente']
+    

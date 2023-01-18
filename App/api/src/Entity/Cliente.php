@@ -12,53 +12,23 @@ class Cliente
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $dni = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $nombre = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $apellidos = null;
+    
+    #[ORM\Column]
+    private ?int $idPersona = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDni(): ?string
+    public function getIdPersona(): ?string
     {
-        return $this->dni;
+        return $this->idPersona;
     }
 
-    public function setDni(string $dni): self
+    public function setIdPersona(int $idPersona): self
     {
-        $this->dni = $dni;
-
-        return $this;
-    }
-
-    public function getNombre(): ?string
-    {
-        return $this->nombre;
-    }
-
-    public function setNombre(string $nombre): self
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    public function getApellidos(): ?string
-    {
-        return $this->apellidos;
-    }
-
-    public function setApellidos(string $apellidos): self
-    {
-        $this->apellidos = $apellidos;
+        $this->idPersona = $idPersona;
 
         return $this;
     }

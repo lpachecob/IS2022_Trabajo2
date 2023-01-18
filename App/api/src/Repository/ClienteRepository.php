@@ -21,22 +21,24 @@ class ClienteRepository extends ServiceEntityRepository
         parent::__construct($registry, Cliente::class);
     }
 
-    public function save(Cliente $entity, bool $flush = false): void
+    public function save(Cliente $entity, bool $flush = false)
     {
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+        return $entity;
     }
 
-    public function remove(Cliente $entity, bool $flush = false): void
+    public function remove(Cliente $entity, bool $flush = false)
     {
         $this->getEntityManager()->remove($entity);
 
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+        return $entity;
     }
 
 //    /**

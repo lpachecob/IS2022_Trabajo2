@@ -1,0 +1,18 @@
+App\Entity\Persona:
+  attributes:
+    id: 
+      groups: ['persona','cliente']
+    dni:
+      groups: ['persona','cliente']
+    nombre:
+      groups: ['persona','cliente']
+    apellidos:
+      groups: ['persona','cliente']
+    fechaDelRegistro:
+      groups: ['persona']
+    edad:
+      groups: ['persona']
+    peso:
+      groups: ['persona']
+    talla:
+      groups: ['persona']
