@@ -13,26 +13,50 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class PersonaController extends AbstractController
 {
-    #[Route('/persona', name: 'create_persona')]
-    public function createProduct(ManagerRegistry $doctrine): JsonResponse
+    #[Route('/persona/create', name: 'create_persona')]
+    public function createProduct(Request $request, ManagerRegistry $doctrine): JsonResponse
     {
         $entityManager = $doctrine->getManager();
-
+        $parameters = json_decode($request->getContent(), true);
+        $response = new JsonResponse();
+        
         $persona = new Persona();
-        $persona->setDni('5555');
-        $persona->setNombre('test');
-        $persona->setApellidos('test test');
+        $dni = $parameters['dni'];
 
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($persona);
+        if (empty($dni)) {
+            $response->setData([
+                'result' => 'failure',
+                'error' => 'Dni is empty',
+                'data' => null
+            ]);
+        }
+        // $persona->setDni('5555');
+        // $persona->setNombre('test');
+        // $persona->setApellidos('test test');
+        // $persona->setFechaDelRegistro(date_format(date_create(), 'U = Y-m-d H:i:s'));
+        // $persona->setEdad(15);
+        // $persona->setPeso(50.3);
+        // $persona->setTalla(1.50);
 
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
+        // // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        // $entityManager->persist($persona);
 
-        return new JsonResponse($persona->getId());
+        // // actually executes the queries (i.e. the INSERT query)
+        // $entityManager->flush();
+
+        // return new JsonResponse($persona->getId());
+
+        $response->setData([
+            'result' => 'success',
+            'data' => [
+                'dni' => $persona->getDni()
+            ],
+        ]);
+
+        return $response;
     }
 
-    #[Route('/persona', name: 'product_show')]
+    #[Route('/persona', name: 'mostrar_personas')]
     public function findPersonas(ManagerRegistry $doctrine): JsonResponse
     {
         $persona = $doctrine->getRepository(Persona::class)->findAll();
@@ -45,18 +69,17 @@ class PersonaController extends AbstractController
 
         return new JsonResponse($persona);
     }
-    #[Route('/persona/{id}', name: 'product_show')]
+    #[Route('/persona/{id}', name: 'mostrar_persona')]
     public function findPersona(ManagerRegistry $doctrine, int $id): JsonResponse
     {
         $persona = $doctrine->getRepository(Persona::class)->find($id);
 
         if (!$persona) {
             throw $this->createNotFoundException(
-                'No persona found for id '.$id
+                'No persona found for id ' . $id
             );
         }
 
         return new JsonResponse($persona->getNombre());
     }
-    
 }
