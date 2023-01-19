@@ -1,7 +1,7 @@
 App\Entity\Cliente:
   attributes:
     id: 
-      groups: ['cliente']
+      groups: ['cliente','venta']
     idPersona:
-      groups: ['cliente']
+      groups: ['cliente','venta']
     

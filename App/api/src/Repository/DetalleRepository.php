@@ -21,22 +21,24 @@ class DetalleRepository extends ServiceEntityRepository
         parent::__construct($registry, Detalle::class);
     }
 
-    public function save(Detalle $entity, bool $flush = false): void
+    public function save(Detalle $entity, bool $flush = false)
     {
         $this->getEntityManager()->persist($entity);
 
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+        return $entity;
     }
 
-    public function remove(Detalle $entity, bool $flush = false): void
+    public function remove(Detalle $entity, bool $flush = false)
     {
         $this->getEntityManager()->remove($entity);
 
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+        return $entity;
     }
 
 //    /**

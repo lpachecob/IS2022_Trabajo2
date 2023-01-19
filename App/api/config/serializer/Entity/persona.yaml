@@ -5,9 +5,9 @@ App\Entity\Persona:
     dni:
       groups: ['persona','cliente']
     nombre:
-      groups: ['persona','cliente']
+      groups: ['persona','cliente','venta']
     apellidos:
-      groups: ['persona','cliente']
+      groups: ['persona','cliente','venta']
     fechaDelRegistro:
       groups: ['persona']
     edad:

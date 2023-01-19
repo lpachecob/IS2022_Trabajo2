@@ -1,0 +1,14 @@
+App\Entity\Venta:
+  attributes:
+    id: 
+      groups: ['venta','detalle']
+    correlativoDeLaVenta:
+      groups: ['venta']
+    fecha:
+      groups: ['venta']
+    cliente:
+      groups: ['venta']
+    conjuntoDeDetalleDeProducto:
+      groups: ['venta','detalle']
+    montoTotalDeLaVenta:
+      groups: ['venta','detalle']

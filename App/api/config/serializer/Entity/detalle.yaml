@@ -1,0 +1,10 @@
+App\Entity\Detalle:
+  attributes:
+    id: 
+      groups: ['detalle','venta']
+    producto:
+      groups: ['detalle','venta']
+    subtotal:
+      groups: ['detalle','venta']
+    cantidad:
+      groups: ['detalle']

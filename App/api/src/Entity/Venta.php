@@ -15,13 +15,13 @@ class Venta
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $correlativoDeLaVenta = null;
+    private ?string $correlativoDeLaVenta = null;
 
     #[ORM\Column(length: 255)]
     private ?string $fecha = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $cliente = null;
+    private ?int $cliente = null;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $conjuntoDeDetalleDeProducto = [];
@@ -34,12 +34,12 @@ class Venta
         return $this->id;
     }
 
-    public function getCorrelativoDeLaVenta(): ?int
+    public function getCorrelativoDeLaVenta(): ?string
     {
         return $this->correlativoDeLaVenta;
     }
 
-    public function setCorrelativoDeLaVenta(int $correlativoDeLaVenta): self
+    public function setCorrelativoDeLaVenta(string $correlativoDeLaVenta): self
     {
         $this->correlativoDeLaVenta = $correlativoDeLaVenta;
 
@@ -58,12 +58,12 @@ class Venta
         return $this;
     }
 
-    public function getCliente(): ?string
+    public function getCliente(): ?int
     {
         return $this->cliente;
     }
 
-    public function setCliente(string $cliente): self
+    public function setCliente(int $cliente): self
     {
         $this->cliente = $cliente;
 

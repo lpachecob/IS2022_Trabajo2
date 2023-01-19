@@ -1,0 +1,10 @@
+App\Entity\Producto:
+  attributes:
+    id: 
+      groups: ['producto','detalle']
+    nombre:
+      groups: ['producto','detalle','venta']
+    precio:
+      groups: ['producto','detalle']
+    stock:
+      groups: ['producto','detalle']
